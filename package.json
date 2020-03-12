@@ -4,7 +4,7 @@
   "description": "GitHub action that takes file that in YAML/JSON/XML format and produces it in output in YAML/JSON/XML format.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,12 @@
   "homepage": "https://github.com/fabasoad/yaml-json-xml-converter-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.3",
+    "json2yaml": "^1.1.0",
     "xml-js": "^1.6.11",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^7.1.0",
+    "mocha-param": "^2.0.0"
   }
 }
