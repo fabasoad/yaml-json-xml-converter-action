@@ -1,0 +1,31 @@
+{
+  "name": "yaml-json-xml-converter-action",
+  "version": "1.0.0",
+  "description": "GitHub action that takes file that in YAML/JSON/XML format and produces it in output in YAML/JSON/XML format.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabasoad/yaml-json-xml-converter-action.git"
+  },
+  "keywords": [
+    "github-action",
+    "xml",
+    "json",
+    "yaml",
+    "yml"
+  ],
+  "author": "Yevhen Fabizhevskyi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabasoad/yaml-json-xml-converter-action/issues"
+  },
+  "homepage": "https://github.com/fabasoad/yaml-json-xml-converter-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.3",
+    "xml-js": "^1.6.11",
+    "yamljs": "^0.3.0"
+  }
+}

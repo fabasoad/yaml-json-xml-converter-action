@@ -1,0 +1,22 @@
+---
+name: 'YAML/JSON/XML Converter Action'
+description: 'This action takes file that in YAML/JSON/XML format and produces it in output in YAML/JSON/XML format.'
+# branding:
+#   icon: list
+#   color: gray-dark
+inputs:
+  path:
+    description: 'Path to the file'
+    required: true
+  from:
+    description: 'Format of a file. Possible values: json, xml, yaml.'
+    required: true
+  to:
+    description: 'Format of a file as a result. Possible values: json, xml, yaml.'
+    required: true
+outputs:
+  data:
+    description: 'Content of a file in a format that is defined in format_to argument.'
+runs:
+  using: 'node12'
+  main: 'index.js'
