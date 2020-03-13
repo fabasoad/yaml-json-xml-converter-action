@@ -57,33 +57,6 @@ jobs:
 ```
 
 ### Result
-![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/master/screenshot-example.png)
+![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/master/screenshot.png)
 
 > _Hint:_ If you define the same format for `from` and `to` parameters you can use this action to read the file :wink:
-
-## Use cases
-### Read version of maven project
-1. Workflow script:
-```yaml
-name: Read maven version
-
-on: push
-
-jobs:
-  read-version:
-    name: Read version
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
-        id: xml2json
-        with:
-          path: 'pom.xml'
-          from: 'xml'
-          to: 'json'
-      - run: |
-        echo "${{ steps.yaml2xml.outputs.data }}" > ./pom.xml.json
-        echo $(jq .project._.version ./pom.xml.json)
-```
-2. Result:
-![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/master/screenshot-read-pom-xml.png)
