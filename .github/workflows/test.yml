@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
+      - name: fabasoad/yaml-json-xml-converter-action@v1.0.0
+        uses: ./
         id: converter1
         with:
           path: 'docker-compose.yml'
@@ -17,7 +18,8 @@ jobs:
           to: 'xml'
       - name: Print converter1 result
         run: echo "${{ steps.converter1.outputs.data }}"
-      - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
+      - name: fabasoad/yaml-json-xml-converter-action@v1.0.0
+        uses: ./
         id: converter2
         with:
           path: 'package.json'
