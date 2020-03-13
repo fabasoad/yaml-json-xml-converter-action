@@ -1,9 +1,9 @@
 ---
 name: 'YAML/JSON/XML Converter Action'
 description: 'This action takes file that in YAML/JSON/XML format and produces it in output in YAML/JSON/XML format.'
-# branding:
-#   icon: list
-#   color: gray-dark
+branding:
+  icon: copy
+  color: green
 inputs:
   path:
     description: 'Path to the file'
