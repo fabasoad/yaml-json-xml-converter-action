@@ -5,7 +5,7 @@ on:
   push:
     paths:
       - '**.yml'
-      - '!node_modules/**.yml'
+      - '!node_modules/**/*.yml'
 
 jobs:
   lint:
