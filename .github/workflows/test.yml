@@ -1,0 +1,27 @@
+---
+name: Convert
+
+on: push
+
+jobs:
+  converter:
+    name: Run converter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
+        id: converter1
+        with:
+          path: 'docker-compose.yml'
+          from: 'yaml'
+          to: 'xml'
+      - name: Print converter1 result
+        run: echo "${{ steps.converter1.outputs.data }}"
+      - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
+        id: converter2
+        with:
+          path: 'package.json'
+          from: 'json'
+          to: 'yaml'
+      - name: Print converter2 result
+        run: echo "${{ steps.converter2.outputs.data }}"

@@ -25,56 +25,38 @@ Result in a format defined in `to` argument.
 
 ## Example usage
 
-### YAML to JSON
-1. Workflow configuration
+### Workflow configuration
 
 ```yaml
-name: YAML to JSON
+name: Convert
 
 on: push
 
 jobs:
   converter:
-    name: Run YAML to JSON
+    name: Run converter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
-        id: converter
+        id: converter1
         with:
-          path: 'conf.yml'
+          path: 'docker-compose.yml'
           from: 'yaml'
-          to: 'json'
+          to: 'xml'
       - name: Print converter result
-        run: echo "${{ steps.converter.outputs.data }}"
-```
-
-2. Result
-![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/master/screenshot-yaml-json.png)
-
-### JSON to XML
-1. Workflow configuration
-
-```yaml
-name: JSON to XML
-
-on: push
-
-jobs:
-  converter:
-    name: Run JSON to XML
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
+        run: echo "${{ steps.converter1.outputs.data }}"
       - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
-        id: converter
+        id: converter2
         with:
           path: 'package.json'
           from: 'json'
-          to: 'xml'
+          to: 'yaml'
       - name: Print converter result
-        run: echo "${{ steps.converter.outputs.data }}"
+        run: echo "${{ steps.converter2.outputs.data }}"
 ```
 
-2. Result
-![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/master/screenshot-json-xml.png)
+### Result
+![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/master/screenshot.png)
+
+> If you define the same format for `from` and `to` parameters you can use this action to read the file :wink:
