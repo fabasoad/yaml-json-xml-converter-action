@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: fabasoad/yaml-json-xml-converter-action@v1.0.0
+      - name: Run fabasoad/yaml-json-xml-converter-action@v1.0.0
         uses: ./
         id: converter1
         with:
@@ -18,7 +18,7 @@ jobs:
           to: 'xml'
       - name: Print converter1 result
         run: echo "${{ steps.converter1.outputs.data }}"
-      - name: fabasoad/yaml-json-xml-converter-action@v1.0.0
+      - name: Run fabasoad/yaml-json-xml-converter-action@v1.0.0
         uses: ./
         id: converter2
         with:
