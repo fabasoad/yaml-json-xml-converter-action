@@ -39,24 +39,49 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
-        id: converter1
+        id: yaml2xml
         with:
           path: 'docker-compose.yml'
           from: 'yaml'
           to: 'xml'
-      - name: Print converter result
-        run: echo "${{ steps.converter1.outputs.data }}"
+      - name: Print yaml2xml result
+        run: echo "${{ steps.yaml2xml.outputs.data }}"
       - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
-        id: converter2
+        id: json2yaml
         with:
           path: 'package.json'
           from: 'json'
           to: 'yaml'
-      - name: Print converter result
-        run: echo "${{ steps.converter2.outputs.data }}"
+      - name: Print json2yaml result
+        run: echo "${{ steps.json2yaml.outputs.data }}"
 ```
 
 ### Result
 ![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/master/screenshot.png)
 
 > If you define the same format for `from` and `to` parameters you can use this action to read the file :wink:
+
+## Use cases
+### Read version of maven project
+
+```yaml
+name: Read maven version
+
+on: push
+
+jobs:
+  read-version:
+    name: Read version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
+        id: xml2json
+        with:
+          path: 'pom.xml'
+          from: 'xml'
+          to: 'json'
+      - run: |
+        echo "${{ steps.yaml2xml.outputs.data }}" > ./pom.xml.json
+        echo $(jq .project.version ./pom.xml.json)
+```
