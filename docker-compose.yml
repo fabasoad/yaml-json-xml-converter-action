@@ -10,6 +10,6 @@ services:
       - test-network
 
 networks:
-    test-network:
-        name: test-network
-        driver: bridge
+  test-network:
+    name: test-network
+    driver: bridge
