@@ -1,38 +1,41 @@
 const fs = require('fs');
-const XML = require('xml-js');
-const YAML = require('yamljs');
 const json2yaml = require('json2yaml');
+const json2xml = require('./json2xml');
+const yaml2js = require('js-yaml');
+const xmlParserFactory = require('xml-js-parse');
+
+const convert = (from, to, content) => {
+    if (from === to) {
+        return content;
+    }
+    if (from === 'yaml' && to === 'json') {
+        const obj = yaml2js.load(content);
+        return JSON.stringify(obj);
+    }
+    if (from === 'yaml' && to === 'xml') {
+        const obj = yaml2js.load(content);
+        return json2xml(obj);
+    }
+    if (from === 'xml' && to === 'json') {
+        const xmlParser = new xmlParserFactory.Parser({ explicitArray: false });
+        return JSON.stringify(xmlParser.parseString(content));
+    }
+    if (from === 'xml' && to === 'yaml') {
+        const xmlParser = new xmlParserFactory.Parser({ explicitArray: false });
+        return json2yaml.stringify(xmlParser.parseString(content));
+    }
+    if (from === 'json' && to === 'xml') {
+        return json2xml(JSON.parse(content));
+    }
+    if (from === 'json' && to === 'yaml') {
+        return json2yaml.stringify(JSON.parse(content), 2);
+    }
+};
 
 module.exports = {
-    convert: (path, from, to) => {
-        if (from === to) {
-            return fs.readFileSync(path, 'utf8');
-        }
-        if (from === 'xml' && to === 'json') {
-            return XML.xml2json(fs.readFileSync(path, 'utf9'), { compact: true });
-        }
-        if (from === 'xml' && to === 'yaml') {
-            json2yaml.stringify(XML.)
-        }
+    convertFile: (from, to, path) => {
+        const content = fs.readFileSync(path, 'utf8');
+        return convert(from, to, content);
     },
-    toObj: (from, path) => {
-        switch (from) {
-            case 'yaml': return YAML.load(path);
-            case 'json': return require(path);
-            case 'xml': return XML.xml2js(fs.readFileSync(path, 'utf8'), {
-                compact: true,
-                nativeType: true,
-                ignoreDeclaration: true,
-                ignoreInstruction: true,
-                ignoreText: true
-            });
-        }
-    },
-    fromObj: (to, obj) => {
-        switch (to) {
-            case 'yaml': return YAML.stringify(obj, 2);
-            case 'json': return JSON.stringify(obj);
-            case 'xml': return XML.js2xml(obj, { spaces: 2, compact: true });
-        }
-    }
+    convert: convert
 };

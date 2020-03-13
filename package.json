@@ -25,12 +25,14 @@
   "homepage": "https://github.com/fabasoad/yaml-json-xml-converter-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.3",
+    "js-yaml": "^3.13.1",
     "json2yaml": "^1.1.0",
-    "xml-js": "^1.6.11",
-    "yamljs": "^0.3.0"
+    "xml-js-parse": "0.0.1"
   },
   "devDependencies": {
+    "jsonschema": "^1.2.5",
     "mocha": "^7.1.0",
-    "mocha-param": "^2.0.0"
+    "mocha-param": "^2.0.0",
+    "yaml-schema-validator": "^1.1.9"
   }
 }
