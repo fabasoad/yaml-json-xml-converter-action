@@ -11,19 +11,19 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run fabasoad/yaml-json-xml-converter-action@v1.0.0
         uses: ./
-        id: converter1
+        id: yaml2xml
         with:
           path: 'docker-compose.yml'
           from: 'yaml'
           to: 'xml'
-      - name: Print converter1 result
-        run: echo "${{ steps.converter1.outputs.data }}"
+      - name: Print yaml2xml result
+        run: echo "${{ steps.yaml2xml.outputs.data }}"
       - name: Run fabasoad/yaml-json-xml-converter-action@v1.0.0
         uses: ./
-        id: converter2
+        id: json2yaml
         with:
-          path: 'package.json'
+          path: 'person.json'
           from: 'json'
           to: 'yaml'
-      - name: Print converter2 result
-        run: echo "${{ steps.converter2.outputs.data }}"
+      - name: Print json2yaml result
+        run: echo "${{ steps.json2yaml.outputs.data }}"
