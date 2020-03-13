@@ -4,8 +4,9 @@ name: YAML Lint
 on:
   push:
     paths:
-      - '**.yml'
-      - '!./node_modules/**/*.yml'
+      - '.github/**.yml'
+      - '.yamllint.yml'
+      - 'action.yml'
 
 jobs:
   lint:

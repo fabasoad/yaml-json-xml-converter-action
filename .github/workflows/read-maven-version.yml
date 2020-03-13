@@ -17,7 +17,4 @@ jobs:
           to: 'json'
       - name: Print version
         run: |
-          touch ./pom.xml.json
-          echo "${{ steps.xml2json.outputs.data }}" > ./pom.xml.json
-          cat ./pom.xml.json
-          echo $(python -c "import json;print json.loads(open('pom.xml.json', 'r').read())['project']['_']['version']")
+          sed -e 's%\"%\"%' "${{ steps.xml2json.outputs.data }}" | jq .project._.version | echo
