@@ -57,13 +57,13 @@ jobs:
 ```
 
 ### Result
-![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/master/screenshot.png)
+![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/master/screenshot-example.png)
 
-> If you define the same format for `from` and `to` parameters you can use this action to read the file :wink:
+> _Hint:_ If you define the same format for `from` and `to` parameters you can use this action to read the file :wink:
 
 ## Use cases
 ### Read version of maven project
-
+1. Workflow script:
 ```yaml
 name: Read maven version
 
@@ -83,5 +83,7 @@ jobs:
           to: 'json'
       - run: |
         echo "${{ steps.yaml2xml.outputs.data }}" > ./pom.xml.json
-        echo $(jq .project.version ./pom.xml.json)
+        echo $(jq .project._.version ./pom.xml.json)
 ```
+2. Result:
+![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/master/screenshot-read-pom-xml.png)

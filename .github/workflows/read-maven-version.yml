@@ -17,5 +17,6 @@ jobs:
           to: 'json'
       - name: Print version
         run: |
+          touch ./pom.xml.json
           echo "${{ steps.xml2json.outputs.data }}" > ./pom.xml.json
           echo "Version: $(jq .project._.version ./pom.xml.json)"
