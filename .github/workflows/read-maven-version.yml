@@ -17,4 +17,4 @@ jobs:
           to: 'json'
       - name: Print version
         run: |
-          sed -e 's%\"%\"%' "${{ steps.xml2json.outputs.data }}" | jq .project._.version | echo
+          echo "${{ steps.xml2json.outputs.data }}" | sed -e 's%\"%\"%' | jq .project._.version | echo
