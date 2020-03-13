@@ -25,6 +25,34 @@ Result in a format defined in `to` argument.
 
 ## Example usage
 
+### Prerequisites
+1. `docker-compose.yml` file that will be transformed into XML file.
+```yaml
+---
+version: '3.7'
+services:
+  mongo:
+    image: mongo:4.2.3-bionic
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: abc123
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    name: test-network
+    driver: bridge
+```
+2. `person.json` file that will be transformed into YAML file.
+```json
+{
+    "name": "John Doe",
+    "age": 32,
+    "hobbies": ["Music", "PC Games"]
+}
+```
+
 ### Workflow configuration
 
 ```yaml
