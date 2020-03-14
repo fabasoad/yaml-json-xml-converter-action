@@ -16,7 +16,7 @@ module.exports = function json2xml(_o) {
 		}
 		function len(o) {
 			var n = 0;
-			for (var a in o) {
+			for (var _ in o) {
 				n++;
 			}
 			return n;
@@ -77,16 +77,16 @@ module.exports = function json2xml(_o) {
 						}
 					}
 				}
-				doc += '</' + tag + '>'
+				doc += '</' + tag + '>';
 				return doc;
 			}
 		}
 		function safeXMLValue(value) {
 			var s = value.toString();
-			s = s.replace('/\&/g', '&amp;');
-			s = s.replace('/\"/g', '&quot;');
-			s = s.replace('/</g', '&lt;');
-			s = s.replace('/>/g', '&gt;');
+			s = s.replace(/\&/g, '&amp;');
+			s = s.replace(/\"/g, '&quot;');
+			s = s.replace(/</g, '&lt;');
+			s = s.replace(/>/g, '&gt;');
 			return s;
 		}
 	}
