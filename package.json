@@ -2,9 +2,9 @@
   "name": "yaml-json-xml-converter-action",
   "version": "1.0.0",
   "description": "GitHub action that takes file that in YAML/JSON/XML format and produces it in output in YAML/JSON/XML format.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "mocha ./test"
+    "test": "mocha ./src/test"
   },
   "repository": {
     "type": "git",

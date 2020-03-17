@@ -19,4 +19,4 @@ outputs:
     description: 'Content of a file in a format that is defined in format_to argument.'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'src/index.js'
