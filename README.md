@@ -1,7 +1,7 @@
 # YAML/JSON/XML action
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/fabasoad/yaml-json-xml-converter-action?include_prereleases) ![CI](https://github.com/fabasoad/yaml-json-xml-converter-action/workflows/CI/badge.svg) ![YAML Lint](https://github.com/fabasoad/yaml-json-xml-converter-action/workflows/YAML%20Lint/badge.svg) [![Total alerts](https://img.shields.io/lgtm/alerts/g/fabasoad/yaml-json-xml-converter-action.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fabasoad/yaml-json-xml-converter-action/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/fabasoad/yaml-json-xml-converter-action.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fabasoad/yaml-json-xml-converter-action/context:javascript) [![Known Vulnerabilities](https://snyk.io/test/github/fabasoad/yaml-json-xml-converter-action/badge.svg)](https://snyk.io/test/github/fabasoad/yaml-json-xml-converter-action) [![Maintainability](https://api.codeclimate.com/v1/badges/2e14282fa64af03f16b5/maintainability)](https://codeclimate.com/github/fabasoad/yaml-json-xml-converter-action/maintainability)
 
-Converts YAML/JSON/XML file formats interchangeably..
+Converts YAML/JSON/XML file formats interchangeably.
 
 ## Inputs
 
