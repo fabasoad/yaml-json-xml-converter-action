@@ -1,27 +1,17 @@
 # YAML/JSON/XML action
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/fabasoad/yaml-json-xml-converter-action?include_prereleases) ![CI](https://github.com/fabasoad/yaml-json-xml-converter-action/workflows/CI/badge.svg) ![YAML Lint](https://github.com/fabasoad/yaml-json-xml-converter-action/workflows/YAML%20Lint/badge.svg) [![Total alerts](https://img.shields.io/lgtm/alerts/g/fabasoad/yaml-json-xml-converter-action.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fabasoad/yaml-json-xml-converter-action/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/fabasoad/yaml-json-xml-converter-action.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/fabasoad/yaml-json-xml-converter-action/context:javascript) [![Known Vulnerabilities](https://snyk.io/test/github/fabasoad/yaml-json-xml-converter-action/badge.svg)](https://snyk.io/test/github/fabasoad/yaml-json-xml-converter-action) [![Maintainability](https://api.codeclimate.com/v1/badges/2e14282fa64af03f16b5/maintainability)](https://codeclimate.com/github/fabasoad/yaml-json-xml-converter-action/maintainability)
 
-This action takes file that in YAML/JSON/XML format and produces it in output in YAML/JSON/XML format.
+Converts YAML/JSON/XML file formats interchangeably..
 
 ## Inputs
 
-### `path`
-
-_[Required]_ Path to the file to be converted.
-
-### `from`
-
-_[Required]_ Format of a file. Possible values: `json`, `xml`, `yaml`.
-
-### `to`
-
-_[Required]_ Format of a file as a result. Possible values: `json`, `xml`, `yaml`.
+1. `path` - _[Required]_ Path to the file to be converted.
+2. `from` - _[Required]_ Format of a file. Possible values: `json`, `xml`, `yaml`.
+3. `to` - _[Required]_ Format of a file as a result. Possible values: `json`, `xml`, `yaml`.
 
 ## Outputs
 
-### `data`
-
-Result in a format defined in `to` argument.
+1. `data` - Result in a format defined in `to` argument.
 
 ## Example usage
 
