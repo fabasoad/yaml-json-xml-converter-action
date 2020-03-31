@@ -31,8 +31,8 @@
   },
   "devDependencies": {
     "jsonschema": "^1.2.5",
-    "mocha": "^7.1.0",
-    "mocha-param": "^2.0.0",
+    "mocha": "^7.1.1",
+    "mocha-param": "^2.0.1",
     "xmllint": "^0.1.1",
     "yaml-schema-validator": "^1.1.9"
   }
