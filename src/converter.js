@@ -22,15 +22,15 @@ const convert = (from, to, content) => {
   validate(from, to);
   switch (from) {
     case 'yaml':
-      const obj = yaml2js.load(content);
-      return to === 'json' ? JSON.stringify(obj) : json2xml(obj);
+      const yamlObject = yaml2js.load(content);
+      return to === 'json' ? JSON.stringify(yamlObject) : json2xml(yamlObject);
     case 'xml':
       const xmlParser = new xmlParserFactory.Parser({ explicitArray: false });
-      const obj = xmlParser.parseString(content);
-      return to === 'json' ? JSON.stringify(obj) : json2yaml.stringify(obj);
+      const xmlObject = xmlParser.parseString(content);
+      return to === 'json' ? JSON.stringify(xmlObject) : json2yaml.stringify(xmlObject);
     case 'json':
-      const obj = JSON.parse(content);
-      return to === 'xml' ? json2xml(obj) : json2yaml.stringify(obj);
+      const jsonObject = JSON.parse(content);
+      return to === 'xml' ? json2xml(jsonObject) : json2yaml.stringify(jsonObject);
   }
 };
 
@@ -38,6 +38,6 @@ module.exports = {
   convert: convert,
   convertFile: (from, to, path) => {
     const content = fs.readFileSync(path, 'utf8');
-    return this.convert(from, to, content);
+    return convert(from, to, content);
   }
 };
