@@ -1,7 +1,10 @@
 ---
 name: CI (latest)
 
-on: push
+on:
+  push:
+    tags:
+      - 'v*.*.*'
 
 jobs:
   build:
@@ -11,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2.1.0
         with:
-          ref: v1.0.0
+          ref: v1.0.1
       - uses: Adzz/jest_test_action@v1.0.0
         with:
           package-manager: npm
