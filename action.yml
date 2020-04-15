@@ -1,5 +1,6 @@
 ---
 name: 'YAML/JSON/XML Converter Action'
+author: Yevhen Fabizhevskyi
 description: 'This action takes file that in YAML/JSON/XML format and produces it in output in YAML/JSON/XML format.'
 branding:
   icon: copy
@@ -19,4 +20,4 @@ outputs:
     description: 'Content of a file in a format that is defined in format_to argument.'
 runs:
   using: 'node12'
-  main: 'src/index.js'
+  main: 'dist/index.js'

@@ -1,10 +1,11 @@
 {
   "name": "yaml-json-xml-converter-action",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Converts YAML/JSON/XML file formats interchangeably.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "mocha ./src/test"
+    "build": "ncc build -m src/index.js",
+    "test": "mocha --timeout 3000 __tests__"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,8 @@
     "xml-js-parse": "0.0.1"
   },
   "devDependencies": {
-    "jsonschema": "^1.2.5",
+    "@zeit/ncc": "^0.22.1",
+    "jsonschema": "^1.2.6",
     "mocha": "^7.1.1",
     "mocha-param": "^2.0.1",
     "xmllint": "^0.1.1",

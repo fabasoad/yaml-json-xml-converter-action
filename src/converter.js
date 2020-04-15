@@ -4,38 +4,40 @@ const json2xml = require('./json2xml');
 const yaml2js = require('js-yaml');
 const xmlParserFactory = require('xml-js-parse');
 
+const SUPPORTED_FORMATS = ['yaml','json','xml'];
+
+const validate = (from, to) => {
+  if (!SUPPORTED_FORMATS.includes(from)) {
+    throw new Error(`${from} format is not supported`);
+  }
+  if (!SUPPORTED_FORMATS.includes(to)) {
+    throw new Error(`${to} format is not supported`);
+  }
+};
+
 const convert = (from, to, content) => {
   if (from === to) {
     return content;
   }
-  if (from === 'yaml' && to === 'json') {
-    const obj = yaml2js.load(content);
-    return JSON.stringify(obj);
-  }
-  if (from === 'yaml' && to === 'xml') {
-    const obj = yaml2js.load(content);
-    return json2xml(obj);
-  }
-  if (from === 'xml' && to === 'json') {
-    const xmlParser = new xmlParserFactory.Parser({ explicitArray: false });
-    return JSON.stringify(xmlParser.parseString(content));
-  }
-  if (from === 'xml' && to === 'yaml') {
-    const xmlParser = new xmlParserFactory.Parser({ explicitArray: false });
-    return json2yaml.stringify(xmlParser.parseString(content));
-  }
-  if (from === 'json' && to === 'xml') {
-    return json2xml(JSON.parse(content));
-  }
-  if (from === 'json' && to === 'yaml') {
-    return json2yaml.stringify(JSON.parse(content), 2);
+  validate(from, to);
+  switch (from) {
+    case 'yaml':
+      const obj = yaml2js.load(content);
+      return to === 'json' ? JSON.stringify(obj) : json2xml(obj);
+    case 'xml':
+      const xmlParser = new xmlParserFactory.Parser({ explicitArray: false });
+      const obj = xmlParser.parseString(content);
+      return to === 'json' ? JSON.stringify(obj) : json2yaml.stringify(obj);
+    case 'json':
+      const obj = JSON.parse(content);
+      return to === 'xml' ? json2xml(obj) : json2yaml.stringify(obj);
   }
 };
 
 module.exports = {
+  convert: convert,
   convertFile: (from, to, path) => {
     const content = fs.readFileSync(path, 'utf8');
-    return convert(from, to, content);
-  },
-  convert: convert
+    return this.convert(from, to, content);
+  }
 };
