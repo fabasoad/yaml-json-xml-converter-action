@@ -1,8 +1,9 @@
 const core = require('@actions/core');
-const { convertFile } = require('./converter');
+const { Converter } = require('./converter');
 
 try {
-  core.setOutput("data", convertFile(
+  const converter = new Converter();
+  core.setOutput("data", converter.convertFile(
     core.getInput('from'),
     core.getInput('to'),
     core.getInput('path')
