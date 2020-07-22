@@ -25,18 +25,18 @@
   },
   "homepage": "https://github.com/fabasoad/yaml-json-xml-converter-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.3",
-    "js-yaml": "^3.13.1",
+    "@actions/core": "^1.2.4",
+    "js-yaml": "^3.14.0",
     "json2yaml": "^1.1.0",
     "xml-js-parse": "0.0.1"
   },
   "devDependencies": {
-    "@zeit/ncc": "^0.22.1",
+    "@zeit/ncc": "^0.22.3",
     "chai": "^4.2.0",
     "jsonschema": "^1.2.6",
-    "mocha": "^7.1.1",
+    "mocha": "^8.0.1",
     "mocha-param": "^2.0.1",
     "xmllint": "^0.1.1",
-    "yaml-schema-validator": "^1.1.9"
+    "yaml-schema-validator": "^1.2.2"
   }
 }
