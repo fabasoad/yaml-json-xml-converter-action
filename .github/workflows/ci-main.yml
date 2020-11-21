@@ -5,9 +5,8 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+      - 'bugfix/**'
+      - 'feature/**'
 
 jobs:
   build:
@@ -15,8 +14,8 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
       - uses: Adzz/jest_test_action@v1.0.0
         with:
-          package-manager: npm
+          package-manager: yarn
           command: test
