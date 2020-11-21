@@ -3,6 +3,8 @@
     "source.fixAll": true
   },
   "cSpell.words": [
+    "Autobuild",
+    "codeql",
     "lcov",
     "vercel"
   ],

@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - 'feature/**'
   schedule:
     - cron: '25 2 * * 6'
 
