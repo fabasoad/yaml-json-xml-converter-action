@@ -5,7 +5,10 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build -m src/index.js",
-    "test": "mocha --timeout 3000 __tests__"
+    "security:auth": "snyk auth",
+    "security:test": "snyk test",
+    "test": "mocha --timeout 3000 __tests__",
+    "coverage": "nyc yarn run test"
   },
   "repository": {
     "type": "git",
@@ -38,6 +41,8 @@
     "jsonschema": "1.4.0",
     "mocha": "8.2.1",
     "mocha-param": "2.0.1",
+    "nyc": "15.1.0",
+    "snyk": "1.430.0",
     "xmllint": "0.1.1",
     "yaml-schema-validator": "1.2.2"
   },

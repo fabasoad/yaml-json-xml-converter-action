@@ -3,6 +3,7 @@
     "source.fixAll": true
   },
   "cSpell.words": [
+    "lcov",
     "vercel"
   ],
   "editor.rulers": [ 80 ]
