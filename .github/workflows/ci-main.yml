@@ -5,9 +5,11 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+      - 'bugfix/**'
+      - 'feature/**'
+
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
   build:
@@ -15,8 +17,25 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.3
-      - uses: Adzz/jest_test_action@v1.0.0
+      - uses: actions/checkout@v2.3.4
+      - name: Install node
+        uses: actions/setup-node@v2.1.1
         with:
-          package-manager: npm
-          command: test
+          node-version: '14'
+      - name: Compile
+        run: yarn install
+      - name: Security tests
+        run: |
+          yarn run security:auth ${{ secrets.SNYK_API_TOKEN }}
+          yarn run security:test
+      - name: Unit tests
+        run: yarn run test
+        if: startsWith(github.ref, 'refs/heads/bugfix/') || startsWith(github.ref, 'refs/heads/feature/')
+      - name: Unit tests with coverage
+        uses: paambaati/codeclimate-action@v2.7.4
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: yarn run test
+          debug: true

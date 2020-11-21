@@ -1,2 +1,6 @@
-.vscode/
+.nyc_output
+.vscode/*
+!.vscode/settings.json
+coverage
 node_modules
+yarn-error.log
