@@ -7,8 +7,7 @@
     "build": "ncc build -m src/index.js",
     "security:auth": "snyk auth",
     "security:test": "snyk test",
-    "test": "mocha --timeout 3000 __tests__",
-    "coverage": "nyc yarn run test"
+    "test": "nyc mocha --timeout 3000 __tests__"
   },
   "repository": {
     "type": "git",
