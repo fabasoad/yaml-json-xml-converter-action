@@ -8,6 +8,9 @@ on:
       - 'bugfix/**'
       - 'feature/**'
 
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
 jobs:
   build:
     name: Build
