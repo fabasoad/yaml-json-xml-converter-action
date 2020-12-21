@@ -22,7 +22,9 @@ Converts YAML/JSON/XML file formats interchangeably.
 
 ### Prerequisites
 
-- Let's imagine that we want to transform `docker-compose.yml` file into XML file.
+Let's imagine we need to transform _yaml_ file into _xml_ format and _json_ file into _yaml_ format.
+
+- `docker-compose.yml` file that will be transformed into _json_ file.
 
 ```yaml
 ---
@@ -42,7 +44,7 @@ networks:
     driver: bridge
 ```
 
-- `person.json` file that will be transformed into YAML file.
+- `person.json` file that will be transformed into _yaml_ file.
 
 ```json
 {
