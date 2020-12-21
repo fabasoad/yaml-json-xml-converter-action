@@ -6,11 +6,11 @@ Converts YAML/JSON/XML file formats interchangeably.
 
 ## Inputs
 
-| Name | Required | Description                      | Default | Possible values |
-|------|----------|----------------------------------|---------|-----------------|
-| path | Yes      | Path to the file to be converted |         | &lt;Path&gt;    |
-| from | Yes      | Format of a file                 |         | json,xml,yaml   |
-| to   | Yes      | Format of a file as a result     |         | json,xml,yaml   |
+| Name | Required | Description                      | Possible values       |
+|------|----------|----------------------------------|-----------------------|
+| path | Yes      | Path to the file to be converted | _&lt;Path&gt;_        |
+| from | Yes      | Format of a file                 | `json`, `xml`, `yaml` |
+| to   | Yes      | Format of a file as a result     | `json`, `xml`, `yaml` |
 
 ## Outputs
 
@@ -22,7 +22,9 @@ Converts YAML/JSON/XML file formats interchangeably.
 
 ### Prerequisites
 
-1. `docker-compose.yml` file that will be transformed into XML file.
+Let's imagine we need to transform _yaml_ file into _xml_ format and _json_ file into _yaml_ format.
+
+- `docker-compose.yml` file that will be transformed into _json_ file.
 
 ```yaml
 ---
@@ -42,7 +44,7 @@ networks:
     driver: bridge
 ```
 
-2. `person.json` file that will be transformed into YAML file.
+- `person.json` file that will be transformed into _yaml_ file.
 
 ```json
 {
@@ -65,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
+      - uses: fabasoad/yaml-json-xml-converter-action@main
         id: yaml2xml
         with:
           path: 'docker-compose.yml'
@@ -73,7 +75,7 @@ jobs:
           to: 'xml'
       - name: Print yaml2xml result
         run: echo "${{ steps.yaml2xml.outputs.data }}"
-      - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
+      - uses: fabasoad/yaml-json-xml-converter-action@main
         id: json2yaml
         with:
           path: 'package.json'
@@ -85,6 +87,6 @@ jobs:
 
 ### Result
 
-![Result](https://raw.githubusercontent.com/fabasoad/yaml-json-xml-converter-action/main/screenshot.png)
+![Result](screenshot.png)
 
 > _Hint:_ If you define the same format for `from` and `to` parameters you can use this action to read the file :wink:
