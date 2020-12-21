@@ -4,8 +4,15 @@
   },
   "cSpell.words": [
     "Autobuild",
+    "INITDB",
+    "UNSECURE",
     "codeql",
+    "issuehunt",
     "lcov",
+    "liberapay",
+    "linebreak",
+    "paambaati",
+    "readonly",
     "vercel"
   ],
   "editor.rulers": [ 80 ]

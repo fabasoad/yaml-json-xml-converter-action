@@ -12,11 +12,11 @@ module.exports = {
     const result = validateYAMLSchema(path, {
       logLevel: 'none',
       schema: {
-        "server": {
-          "version": {
-            "required": true
+        's': {
+          'v': {
+            'required': true
           },
-          "modules": [{ "required": true }]
+          'modules': [{ 'required': true }]
         }
       }
     });
@@ -26,26 +26,26 @@ module.exports = {
   validateJSON: (content) => {
     const v = new JSONValidator();
     const serverContentSchema = {
-      "id": "/ServerContentSchema",
-      "type": "object",
-      "properties": {
-        "modules": {
-          "type": "array",
-          "items": { "type": "string" }
+      'id': '/ServerContentSchema',
+      'type': 'object',
+      'properties': {
+        'modules': {
+          'type': 'array',
+          'items': { 'type': 'string' }
         },
-        "version": { "type": "Number" },
-        "required": ["modules", "version"]
+        'v': { 'type': 'Number' },
+        'required': ['modules', 'v']
       }
     };
     const serverSchema = {
-      "id": "/ServerSchema",
-      "type": "object",
-      "properties": {
-        "server": { "$ref": "/ServerContentSchema" },
-        "required": ["server"]
+      'id': '/ServerSchema',
+      'type': 'object',
+      'properties': {
+        's': { '$ref': '/ServerContentSchema' },
+        'required': ['s']
       }
     };
-    v.addSchema(serverContentSchema, "/ServerContentSchema");
+    v.addSchema(serverContentSchema, '/ServerContentSchema');
     const result = v.validate(JSON.parse(content), serverSchema);
     return result.valid;
   },
@@ -53,11 +53,12 @@ module.exports = {
     const result = xmllint.validateXML({
       xml: content,
       schema: `<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-            <xs:element name="server">
+            <xs:element name="s">
             <xs:complexType>
                 <xs:sequence>
-                <xs:element type="xs:byte" name="version"/>
-                <xs:element type="xs:string" name="modules" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element type="xs:byte" name="v"/>
+                <xs:element type="xs:string" name="modules"
+                  maxOccurs="unbounded" minOccurs="0"/>
                 </xs:sequence>
             </xs:complexType>
             </xs:element>

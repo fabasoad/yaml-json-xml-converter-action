@@ -12,7 +12,7 @@ class ConverterValidationError extends Error {
 
 class Converter {
   constructor() {
-    this.SUPPORTED_FORMATS = ['yaml','json','xml'];
+    this.SUPPORTED_FORMATS = ['yaml', 'json', 'xml'];
     this.xmlParser = new Parser({ explicitArray: false });
   }
 
@@ -31,15 +31,17 @@ class Converter {
     }
     this._validate(from, to);
     switch (from) {
-      case 'yaml':
-        const yamlObject = yaml2js.load(content);
-        return to === 'json' ? JSON.stringify(yamlObject) : json2xml(yamlObject);
-      case 'xml':
-        const xmlObject = this.xmlParser.parseString(content);
-        return to === 'json' ? JSON.stringify(xmlObject) : json2yaml.stringify(xmlObject);
-      case 'json':
-        const jsonObject = JSON.parse(content);
-        return to === 'xml' ? json2xml(jsonObject) : json2yaml.stringify(jsonObject);
+    case 'yaml':
+      const yamlObject = yaml2js.load(content);
+      return to === 'json' ? JSON.stringify(yamlObject) : json2xml(yamlObject);
+    case 'xml':
+      const xmlObject = this.xmlParser.parseString(content);
+      return to === 'json' ?
+        JSON.stringify(xmlObject) : json2yaml.stringify(xmlObject);
+    case 'json':
+      const jsonObject = JSON.parse(content);
+      return to === 'xml' ?
+        json2xml(jsonObject) : json2yaml.stringify(jsonObject);
     }
   }
 
