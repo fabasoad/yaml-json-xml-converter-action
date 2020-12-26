@@ -1,6 +1,6 @@
 {
   "name": "yaml-json-xml-converter-action",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Converts YAML/JSON/XML file formats interchangeably.",
   "main": "dist/index.js",
   "scripts": {
@@ -46,7 +46,7 @@
     "mocha": "8.2.1",
     "mocha-param": "2.0.1",
     "nyc": "15.1.0",
-    "snyk": "1.437.2",
+    "snyk": "1.437.3",
     "xmllint": "0.1.1",
     "yaml-schema-validator": "1.2.2"
   },
