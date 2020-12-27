@@ -3,7 +3,7 @@ name: Check updates
 
 on:
   schedule:
-    - cron: '0 21 * * 6'
+    - cron: '0 0 1,15 * *'
 
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
