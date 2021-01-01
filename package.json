@@ -5,12 +5,15 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build -m src/index.js",
-    "lint": "eslint src __tests__",
+    "lint:md": "markdownlint --config .markdownlint.yml '**/*.md'",
+    "lint:ts": "eslint src __tests__",
+    "lint": "yarn run lint:md && yarn run lint:ts",
+    "postinstall": "yarn husky install",
+    "prepare": "yarn run snyk-protect",
     "security:auth": "snyk auth",
     "security:test": "snyk test",
-    "test": "nyc mocha --timeout 3000 __tests__",
     "snyk-protect": "snyk protect",
-    "prepublish": "yarn run snyk-protect"
+    "test": "nyc mocha --timeout 3000 __tests__"
   },
   "repository": {
     "type": "git",
@@ -41,8 +44,9 @@
     "eslint": "7.16.0",
     "eslint-config-google": "0.14.0",
     "git-branch-is": "4.0.0",
-    "husky": "4.3.6",
+    "husky": "5.0.6",
     "jsonschema": "1.4.0",
+    "markdownlint-cli": "0.26.0",
     "mocha": "8.2.1",
     "mocha-param": "2.0.1",
     "nyc": "15.1.0",
@@ -50,11 +54,5 @@
     "xmllint": "0.1.1",
     "yaml-schema-validator": "1.2.2"
   },
-  "snyk": true,
-  "husky": {
-    "hooks": {
-      "pre-commit": "git-branch-is --not main && yarn run build && git add dist/index.js",
-      "pre-push": "yarn run lint && yarn test"
-    }
-  }
+  "snyk": true
 }

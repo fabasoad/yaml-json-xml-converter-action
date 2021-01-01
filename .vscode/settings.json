@@ -6,11 +6,13 @@
     "Autobuild",
     "INITDB",
     "UNSECURE",
+    "briandk",
     "codeql",
     "issuehunt",
     "lcov",
     "liberapay",
     "linebreak",
+    "markdownlint",
     "paambaati",
     "readonly",
     "vercel"
