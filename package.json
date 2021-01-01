@@ -1,6 +1,6 @@
 {
   "name": "yaml-json-xml-converter-action",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Converts YAML/JSON/XML file formats interchangeably.",
   "main": "dist/index.js",
   "scripts": {
