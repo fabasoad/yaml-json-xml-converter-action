@@ -1,13 +1,13 @@
 {
   "name": "yaml-json-xml-converter-action",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Converts YAML/JSON/XML file formats interchangeably.",
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build -m src/index.js",
     "lint:md": "markdownlint --config .markdownlint.yml '**/*.md'",
-    "lint:ts": "eslint src __tests__",
-    "lint": "yarn run lint:md && yarn run lint:ts",
+    "lint:es": "eslint src __tests__",
+    "lint": "yarn run lint:md && yarn run lint:es",
     "postinstall": "yarn husky install",
     "prepare": "yarn run snyk-protect",
     "security:auth": "snyk auth",
@@ -34,14 +34,14 @@
   "homepage": "https://github.com/fabasoad/yaml-json-xml-converter-action#readme",
   "dependencies": {
     "@actions/core": "1.2.6",
-    "js-yaml": "3.14.1",
+    "js-yaml": "4.0.0",
     "json2yaml": "1.1.0",
     "xml-js-parse": "0.0.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "0.26.1",
+    "@vercel/ncc": "0.27.0",
     "chai": "4.2.0",
-    "eslint": "7.16.0",
+    "eslint": "7.18.0",
     "eslint-config-google": "0.14.0",
     "git-branch-is": "4.0.0",
     "husky": "5.0.6",
@@ -50,7 +50,7 @@
     "mocha": "8.2.1",
     "mocha-param": "2.0.1",
     "nyc": "15.1.0",
-    "snyk": "1.437.3",
+    "snyk": "1.437.4",
     "xmllint": "0.1.1",
     "yaml-schema-validator": "1.2.2"
   },
