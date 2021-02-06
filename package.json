@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@vercel/ncc": "0.27.0",
-    "chai": "4.2.0",
+    "chai": "4.3.0",
     "eslint": "7.19.0",
     "eslint-config-google": "0.14.0",
     "git-branch-is": "4.0.0",
@@ -50,7 +50,7 @@
     "mocha": "8.2.1",
     "mocha-param": "2.0.1",
     "nyc": "15.1.0",
-    "snyk": "1.440.1",
+    "snyk": "1.446.0",
     "xmllint": "0.1.1",
     "yaml-schema-validator": "1.2.2"
   },
