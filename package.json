@@ -1,6 +1,6 @@
 {
   "name": "yaml-json-xml-converter-action",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Converts YAML/JSON/XML file formats interchangeably.",
   "main": "dist/index.js",
   "scripts": {
@@ -41,16 +41,16 @@
   "devDependencies": {
     "@vercel/ncc": "0.27.0",
     "chai": "4.3.0",
-    "eslint": "7.19.0",
+    "eslint": "7.20.0",
     "eslint-config-google": "0.14.0",
     "git-branch-is": "4.0.0",
-    "husky": "5.0.6",
+    "husky": "5.0.9",
     "jsonschema": "1.4.0",
     "markdownlint-cli": "0.26.0",
-    "mocha": "8.2.1",
+    "mocha": "8.3.0",
     "mocha-param": "2.0.1",
     "nyc": "15.1.0",
-    "snyk": "1.446.0",
+    "snyk": "1.458.0",
     "xmllint": "0.1.1",
     "yaml-schema-validator": "1.2.2"
   },
