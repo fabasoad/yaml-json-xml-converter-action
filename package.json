@@ -50,7 +50,7 @@
     "mocha": "8.3.0",
     "mocha-param": "2.0.1",
     "nyc": "15.1.0",
-    "snyk": "1.454.0",
+    "snyk": "1.458.0",
     "xmllint": "0.1.1",
     "yaml-schema-validator": "1.2.2"
   },
