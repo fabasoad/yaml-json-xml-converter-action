@@ -39,9 +39,9 @@
     "xml-js-parse": "0.0.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "0.27.0",
+    "@vercel/ncc": "0.28.2",
     "chai": "4.3.4",
-    "eslint": "7.23.0",
+    "eslint": "7.24.0",
     "eslint-config-google": "0.14.0",
     "git-branch-is": "4.0.0",
     "husky": "6.0.0",
@@ -50,7 +50,7 @@
     "mocha": "8.3.2",
     "mocha-param": "2.0.1",
     "nyc": "15.1.0",
-    "snyk": "1.520.0",
+    "snyk": "1.530.0",
     "xmllint": "0.1.1",
     "yaml-schema-validator": "1.2.2"
   },

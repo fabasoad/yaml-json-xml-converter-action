@@ -1,6 +1,7 @@
 .nyc_output
 .vscode/*
 !.vscode/settings.json
+.idea
 coverage
 node_modules
 yarn-error.log
