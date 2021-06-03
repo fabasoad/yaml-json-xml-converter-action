@@ -41,7 +41,7 @@
   "devDependencies": {
     "@vercel/ncc": "0.28.6",
     "chai": "4.3.4",
-    "eslint": "7.25.0",
+    "eslint": "7.27.0",
     "eslint-config-google": "0.14.0",
     "git-branch-is": "4.0.0",
     "husky": "6.0.0",
