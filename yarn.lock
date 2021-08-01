@@ -5020,10 +5020,10 @@ yaml-js@^0.3.0:
   resolved "https://registry.yarnpkg.com/yaml-js/-/yaml-js-0.3.0.tgz#ad0893d9de881a93fd6bf936e8d89cdde309e848"
   integrity sha512-JbTUdsPiCkOyz+JOSqAVc19omTnUBnBQglhuclYov5HpWbEOz8y+ftqWjiMa9Pe/eF/dmCUeNgVs/VWg53GlgQ==
 
-yaml-schema-validator@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/yaml-schema-validator/-/yaml-schema-validator-1.2.2.tgz#48d85ccda92fed3acc51cdf706530c2927e09807"
-  integrity sha512-mIAsiZgrdsWsVLek8f4bi27BQRfPb+aP95RDDplK1UIQchZX8ZtJrIDHTar7yoFIJKfPWmmyL+OugrLzITMW1g==
+yaml-schema-validator@1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/yaml-schema-validator/-/yaml-schema-validator-1.2.3.tgz#9aecb1bb2dde1d7faca962344989ca641110ae88"
+  integrity sha512-Ijr4R68EEXTM7ukKeGTcaWF5TqPous2WcsYaeKZArZXMzLp/Zvi/EzVbHkxy8vbb2TjPgQt7/tjIdkaEzeDKTw==
   dependencies:
     chalk "^2.4.1"
     commander "^2.16.0"
