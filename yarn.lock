@@ -1724,10 +1724,10 @@ signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.5.tgz#9e3e8cc0c75a99472b44321033a7702e7738252f"
   integrity sha512-KWcOiKeQj6ZyXx7zq4YxSMgHRlod4czeBQZrPb8OKcohcqAXShm7E20kEMle9WBt26hFcAf0qLOcp5zmY7kOqQ==
 
-snyk@1.752.0:
-  version "1.752.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.752.0.tgz#2901c04e83eece1dde35b67a5658f7dd4e27ca6a"
-  integrity sha512-jaDO3UD5DwIn8kitJsUOLG7TRBtd0MKeHCXBBOqkVeAAcOMDo4oEtamdnJi2EUjPIUoMNZbpVRHU/p9MK91Q+Q==
+snyk@1.780.0:
+  version "1.780.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.780.0.tgz#687c093f75ba6bfce2595506855b11fac0fff167"
+  integrity sha512-HadbD3tPdIgjDBvesh6JYbJcNgE/AkuCqhvF/kiUQUM/7QOcWgTxTx8hoXkondRR7MDZ3dH+H+ccFdIiM4wcBQ==
 
 source-map@^0.5.0:
   version "0.5.7"
