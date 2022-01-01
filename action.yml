@@ -19,5 +19,5 @@ outputs:
   data:
     description: 'Content of a file in a format that is defined in format_to argument.'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
