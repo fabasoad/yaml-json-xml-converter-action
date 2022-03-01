@@ -39,7 +39,7 @@
     "xml-js-parse": "0.0.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "0.33.1",
+    "@vercel/ncc": "0.33.3",
     "chai": "4.3.4",
     "eslint": "8.6.0",
     "eslint-config-google": "0.14.0",
