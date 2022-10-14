@@ -1,0 +1,33 @@
+---
+name: Functional Tests
+
+on:
+  push:
+    branches:
+      - 'dependabot/**'
+      - 'feature-**'
+      - 'fix-**'
+      - 'main'
+
+jobs:
+  yaml-to-json:
+    name: YAML to JSON
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Prepare
+        run: |
+          echo "s:\n  v: 1\n  modules:\n    - "test1"\n    - \"test2\"" >> test.yaml
+      - name: Transform
+        uses: ./
+        id: yaml_to_json
+        with:
+          path: './test.yaml'
+          from: 'yaml'
+          to: 'json'
+      - name: Validate
+        run: |
+          [[ "${{ steps.yaml_to_json.outputs.data }}" == "{\"s\":{\"v\":{\"required\":true},\"modules\":[{\"required\":true}]}}" ]] || exit 1;
