@@ -58,14 +58,15 @@ jobs:
           to: 'yaml'
       - name: Save YAML
         run: echo "${{ steps.xml_yaml.outputs.data }}" >> xml.yaml
-      - name: Delete last line (Linux)
-        if: matrix.os != 'macos-latest'
+      - name: Delete last line (Linux, Windows)
+        if: ${{ matrix.os != 'macos-latest' }}
         run: sed -i '$d' xml.yaml
       - name: Delete last line (macOS)
-        if: matrix.os == 'macos-latest'
+        if: ${{ matrix.os == 'macos-latest' }}
         run: sed -i '' '$d' xml.yaml
       - name: Print YAML
         run: cat xml.yaml
       - name: Validate
         run: |
           cmp -s "test.yaml" "xml.yaml" || diff "test.yaml" "xml.yaml"
+        shell: bash
