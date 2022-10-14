@@ -27,7 +27,7 @@ jobs:
           from: 'yaml'
           to: 'json'
       - name: Save JSON
-        run: echo "${{ steps.yaml_json.outputs.data }}" >> yaml.json
+        run: echo '${{ steps.yaml_json.outputs.data }}' >> yaml.json
       - name: Print JSON
         run: cat yaml.json
       - name: JSON to XML
