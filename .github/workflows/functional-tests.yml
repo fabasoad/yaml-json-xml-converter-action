@@ -16,7 +16,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        os: ['windows-latest', 'macos-latest']
+        os: ['windows-latest']
     runs-on: ${{ matrix.os }}
     steps:
       - name: Test yq
