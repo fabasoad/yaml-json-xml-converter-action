@@ -58,10 +58,10 @@ jobs:
           to: 'yaml'
       - name: Save YAML
         run: echo "${{ steps.xml_yaml.outputs.data }}" >> xml.yaml
-      - name: Delete last line
-        run: sed -i '$d' xml.yaml
+#      - name: Delete last line
+#        run: sed -i '$d' xml.yaml
       - name: Print YAML
         run: cat xml.yaml
       - name: Validate
         run: |
-          cmp -s "test.yaml" "xml.yaml" || diff "test.yaml" "xml.yaml" && exit 1
+          cmp -s "test.yaml" "xml.yaml" || diff "test.yaml" "xml.yaml"
