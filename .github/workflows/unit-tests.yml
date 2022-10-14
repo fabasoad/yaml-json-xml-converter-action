@@ -5,12 +5,9 @@ on:
   push:
     branches:
       - 'main'
-      - 'bugfix/**'
+      - 'fix-*'
       - 'dependabot/**'
-      - 'feature/**'
-
-env:
-  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+      - 'feature-*'
 
 jobs:
   unit_tests:
@@ -18,18 +15,18 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
       - name: Cache node_modules
         id: cache
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Compile
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-        run: yarn install
+        run: yarn install --ignore-scripts
       - name: Lint
         run: yarn run lint
       - name: Unit tests

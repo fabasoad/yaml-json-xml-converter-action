@@ -1,7 +1,6 @@
 .DS_Store
 .nyc_output
-.vscode/*
-!.vscode/settings.json
+.vscode
 .idea
 coverage
 node_modules
