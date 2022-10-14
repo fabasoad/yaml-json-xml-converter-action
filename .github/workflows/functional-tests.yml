@@ -12,6 +12,7 @@ on:
 jobs:
   yaml-to-json:
     name: YAML / JSON / XML
+    if: false
     timeout-minutes: 5
     strategy:
       matrix:
@@ -58,12 +59,12 @@ jobs:
           to: 'yaml'
       - name: Save YAML
         run: echo "${{ steps.xml_yaml.outputs.data }}" >> xml.yaml
-      - name: Delete last line (Linux, Windows)
-        if: ${{ matrix.os != 'macos-latest' }}
-        run: sed -i '$d' xml.yaml
-      - name: Delete last line (macOS)
-        if: ${{ matrix.os == 'macos-latest' }}
-        run: sed -i '' '$d' xml.yaml
+#      - name: Delete last line (Linux, Windows)
+#        if: ${{ matrix.os != 'macos-latest' }}
+#        run: sed -i '$d' xml.yaml
+#      - name: Delete last line (macOS)
+#        if: ${{ matrix.os == 'macos-latest' }}
+#        run: sed -i '' '$d' xml.yaml
       - name: Print YAML
         run: cat xml.yaml
       - name: Validate
