@@ -21,6 +21,7 @@ jobs:
     steps:
       - name: Test yq
         run: yq --version
+        shell: bash
       - name: Exit 1
         run: exit 1
       - uses: actions/checkout@v3
