@@ -5,16 +5,15 @@ on:
   push:
     branches:
       - 'main'
-      - 'bugfix/**'
-      - 'dependabot/**'
-      - 'feature/**'
+      - 'fix-*'
+      - 'feature-*'
 
 jobs:
   snyk_tests:
     name: Snyk
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
       - uses: snyk/actions/node@master

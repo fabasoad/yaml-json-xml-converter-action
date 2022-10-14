@@ -1,18 +1,12 @@
 {
   "name": "yaml-json-xml-converter-action",
-  "version": "1.0.14",
+  "version": "1.1.0",
   "description": "Converts YAML/JSON/XML file formats interchangeably.",
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build -m src/index.js",
-    "lint:md": "markdownlint --config .markdownlint.yml '**/*.md'",
-    "lint:es": "eslint src __tests__",
-    "lint": "yarn run lint:md && yarn run lint:es",
-    "postinstall": "yarn husky install",
-    "prepare": "yarn run snyk-protect",
-    "security:auth": "snyk auth",
-    "security:test": "snyk test",
-    "snyk-protect": "snyk protect",
+    "lint": "eslint src __tests__",
+    "postinstall": "pre-commit install --hook-type pre-commit && pre-commit install --hook-type pre-push",
     "test": "nyc mocha --timeout 3000 __tests__"
   },
   "repository": {
@@ -33,26 +27,21 @@
   },
   "homepage": "https://github.com/fabasoad/yaml-json-xml-converter-action#readme",
   "dependencies": {
-    "@actions/core": "1.9.1",
+    "@actions/core": "1.10.0",
     "js-yaml": "4.1.0",
     "json2yaml": "1.1.0",
     "xml-js-parse": "0.0.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "0.33.3",
+    "@vercel/ncc": "0.34.0",
     "chai": "4.3.6",
-    "eslint": "8.10.0",
+    "eslint": "8.25.0",
     "eslint-config-google": "0.14.0",
-    "git-branch-is": "4.0.0",
-    "husky": "7.0.4",
-    "jsonschema": "1.4.0",
-    "markdownlint-cli": "0.31.1",
-    "mocha": "9.2.1",
+    "jsonschema": "1.4.1",
+    "mocha": "10.0.0",
     "mocha-param": "2.0.1",
     "nyc": "15.1.0",
-    "snyk": "1.859.0",
     "xmllint": "0.1.1",
     "yaml-schema-validator": "1.2.3"
-  },
-  "snyk": true
+  }
 }
