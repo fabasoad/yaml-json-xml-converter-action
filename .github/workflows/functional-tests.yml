@@ -54,4 +54,4 @@ jobs:
         run: cat xml.yaml
       - name: Validate
         run: |
-          [[ cmp -s ".github/workflows/fixtures/test.yaml" "xml.yaml" ]] || exit 1;
+          cmp -s ".github/workflows/fixtures/test.yaml" "xml.yaml" || cat xml.yaml && exit 1
