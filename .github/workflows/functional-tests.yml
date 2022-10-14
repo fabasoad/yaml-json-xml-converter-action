@@ -59,7 +59,7 @@ jobs:
       - name: Save YAML
         run: echo "${{ steps.xml_yaml.outputs.data }}" >> xml.yaml
       - name: Delete last line
-        run: sed '$d' xml.yaml
+        run: sed -i '$d' xml.yaml
       - name: Print YAML
         run: cat xml.yaml
       - name: Validate
