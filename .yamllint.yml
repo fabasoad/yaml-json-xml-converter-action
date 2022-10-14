@@ -1,9 +1,8 @@
 ---
 extends: default
+ignore-from-file: .yamllintignore
 
 rules:
   line-length:
     max: 165
     level: error
-  indentation:
-    level: warning
