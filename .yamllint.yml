@@ -5,3 +5,5 @@ rules:
   line-length:
     max: 165
     level: error
+  indentation:
+    level: warning
