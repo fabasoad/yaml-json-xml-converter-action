@@ -28,6 +28,8 @@ jobs:
           to: 'json'
       - name: Save JSON
         run: echo "${{ steps.yaml_json.outputs.data }}" >> yaml.json
+      - name: Print JSON
+        run: cat yaml.json
       - name: JSON to XML
         uses: ./
         id: json_xml
@@ -37,6 +39,8 @@ jobs:
           to: 'xml'
       - name: Save XML
         run: echo "${{ steps.json_xml.outputs.data }}" >> json.xml
+      - name: Print XML
+        run: cat json.xml
       - name: XML to YAML
         uses: ./
         id: xml_yaml
@@ -46,6 +50,8 @@ jobs:
           to: 'yaml'
       - name: Save YAML
         run: echo "${{ steps.xml_yaml.outputs.data }}" >> xml.yaml
+      - name: Print YAML
+        run: cat xml.yaml
       - name: Validate
         run: |
           [[ cmp -s ".github/workflows/fixtures/test.yaml" "xml.yaml" ]] || exit 1;
