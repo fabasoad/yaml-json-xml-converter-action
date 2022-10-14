@@ -1,0 +1,6 @@
+---
+s:
+  v: 1
+  modules:
+    - "test1"
+    - "test2"

@@ -11,7 +11,7 @@ on:
 
 jobs:
   yaml-to-json:
-    name: YAML to JSON
+    name: YAML / JSON / XML
     timeout-minutes: 5
     strategy:
       matrix:
@@ -19,16 +19,33 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - name: Prepare
-        run: |
-          echo "s:\n  v: 1\n  modules:\n    - "test1"\n    - \"test2\"" >> test.yaml
-      - name: Transform
+      - name: YAML to JSON
         uses: ./
-        id: yaml_to_json
+        id: yaml_json
         with:
-          path: './test.yaml'
+          path: '.github/workflows/fixtures/test.yaml'
           from: 'yaml'
           to: 'json'
+      - name: Save JSON
+        run: echo "${{ steps.yaml_json.outputs.data }}" >> yaml.json
+      - name: JSON to XML
+        uses: ./
+        id: json_xml
+        with:
+          path: './yaml.json'
+          from: 'json'
+          to: 'xml'
+      - name: Save XML
+        run: echo "${{ steps.json_xml.outputs.data }}" >> json.xml
+      - name: XML to YAML
+        uses: ./
+        id: xml_yaml
+        with:
+          path: './json.xml'
+          from: 'xml'
+          to: 'yaml'
+      - name: Save YAML
+        run: echo "${{ steps.xml_yaml.outputs.data }}" >> xml.yaml
       - name: Validate
         run: |
-          [[ "${{ steps.yaml_to_json.outputs.data }}" == "{\"s\":{\"v\":{\"required\":true},\"modules\":[{\"required\":true}]}}" ]] || exit 1;
+          [[ cmp -s ".github/workflows/fixtures/test.yaml" "xml.yaml" ]] || exit 1;
