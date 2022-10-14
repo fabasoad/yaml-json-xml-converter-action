@@ -27,7 +27,6 @@ jobs:
           echo "    modules: " >> test.yaml
           echo "      - test1" >> test.yaml
           echo "      - test2" >> test.yaml
-          echo "  " >> test.yaml
       - name: YAML to JSON
         uses: ./
         id: yaml_json
