@@ -19,11 +19,20 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
+      - name: Prepare
+        run: |
+          echo "---" > test.yaml
+          echo "  s: " >> test.yaml
+          echo "    v: 1" >> test.yaml
+          echo "    modules: " >> test.yaml
+          echo "      - test1" >> test.yaml
+          echo "      - test2" >> test.yaml
+          echo " " >> test.yaml
       - name: YAML to JSON
         uses: ./
         id: yaml_json
         with:
-          path: '.github/workflows/fixtures/test.yaml'
+          path: './test.yaml'
           from: 'yaml'
           to: 'json'
       - name: Save JSON
@@ -54,4 +63,4 @@ jobs:
         run: cat xml.yaml
       - name: Validate
         run: |
-          cmp -s ".github/workflows/fixtures/test.yaml" "xml.yaml" || diff ".github/workflows/fixtures/test.yaml" "xml.yaml" && exit 1
+          cmp -s "test.yaml" "xml.yaml" || diff "test.yaml" "xml.yaml" && exit 1
