@@ -24,10 +24,15 @@ runs:
   steps:
     # From YAML/JSON
     - name: JSON/YAML to JSON/XML
+      id: mikefarah_yq
       uses: mikefarah/yq@v4.28.1
       if: ${{ inputs.from == 'yaml' }}
       with:
-        cmd: yq -P '${{ inputs.path }}' -o=${{ inputs.to }} > .yaml-json-xml-converter-action
+        cmd: yq -P '${{ inputs.path }}' -o=${{ inputs.to }}
+    - name: Save to file
+      if: ${{ inputs.from == 'yaml' }}
+      run: echo '${{ steps.mikefarah_yq.outputs.result }}' > .yaml-json-xml-converter-action
+      shell: bash
     # From XML
     - name: Install yq
       if: ${{ inputs.from == 'xml' }}
