@@ -27,9 +27,7 @@ runs:
       uses: mikefarah/yq@v4.28.1
       if: ${{ inputs.from == 'yaml' }}
       with:
-        cmd: |
-          res="$(yq -P '${{ inputs.path }}' -o=${{ inputs.to }})"
-          echo "OUTPUT=\"$res\"" >> $GITHUB_ENV
+        cmd: yq -P '${{ inputs.path }}' -o=${{ inputs.to }} > .yaml-json-xml-converter-action
     # From XML
     - name: Install yq
       if: ${{ inputs.from == 'xml' }}
@@ -37,15 +35,11 @@ runs:
       shell: bash
     - name: XML to JSON
       if: ${{ inputs.from == 'xml' && inputs.to == 'json' }}
-      run: |
-        res="$(xq . '${{ inputs.path }}')"
-        echo "OUTPUT=\"$res\"" >> $GITHUB_ENV
+      run: xq . '${{ inputs.path }}' > .yaml-json-xml-converter-action
       shell: bash
     - name: XML to YAML
       if: ${{ inputs.from == 'xml' && inputs.to == 'yaml' }}
-      run: |
-        res="$(xq . '${{ inputs.path }}' | yq -y .)"
-        echo "OUTPUT=\"$res\"" >> $GITHUB_ENV
+      run: xq . '${{ inputs.path }}' | yq -y . > .yaml-json-xml-converter-action
       shell: bash
     - name: Uninstall yq
       if: ${{ inputs.from == 'xml' }}
@@ -54,5 +48,7 @@ runs:
     # Output
     - name: Save output
       id: result
-      run: echo "::set-output name=data::$OUTPUT"
+      run: |
+        echo "::set-output name=data::$(cat .yaml-json-xml-converter-action)"
+        rm -f .yaml-json-xml-converter-action
       shell: bash
