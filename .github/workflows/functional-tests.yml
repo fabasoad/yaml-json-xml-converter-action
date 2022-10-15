@@ -57,13 +57,17 @@ jobs:
           path: json.xml
           from: xml
           to: yaml
-#      - name: Print YAML
-#        run: echo "${{ steps.xml_yaml.outputs.data }}"
       - name: Save YAML
         run: echo "${{ steps.xml_yaml.outputs.data }}" >> xml.yaml
       - name: Print YAML
         run: cat xml.yaml
-#      - name: Validate
-#        run: |
-#          cmp -s "test.yaml" "xml.yaml" || diff "test.yaml" "xml.yaml"
-#        shell: bash
+      - name: Validate
+        run: cmp -s "test.yaml" "xml.yaml" || diff "test.yaml" "xml.yaml"
+        shell: bash
+      - name: Clean
+        run: |
+          rm -f test.yaml
+          rm -f yaml.json
+          rm -f json.xml
+          rm -f xml.yaml
+        shell: bash
