@@ -29,7 +29,7 @@ runs:
       with:
         cmd: |
           res="$(yq -P '${{ inputs.path }}' -o=${{ inputs.to }})"
-          echo "OUTPUT=$res" >> $GITHUB_ENV
+          echo "OUTPUT=\"$res\"" >> $GITHUB_ENV
     # From XML
     - name: Install yq
       if: ${{ inputs.from == 'xml' }}
@@ -39,13 +39,13 @@ runs:
       if: ${{ inputs.from == 'xml' && inputs.to == 'json' }}
       run: |
         res="$(xq . '${{ inputs.path }}')"
-        echo "OUTPUT=$res" >> $GITHUB_ENV
+        echo "OUTPUT=\"$res\"" >> $GITHUB_ENV
       shell: bash
     - name: XML to YAML
       if: ${{ inputs.from == 'xml' && inputs.to == 'yaml' }}
       run: |
         res="$(xq . '${{ inputs.path }}' | yq -y .)"
-        echo "OUTPUT=$res" >> $GITHUB_ENV
+        echo "OUTPUT=\"$res\"" >> $GITHUB_ENV
       shell: bash
     - name: Uninstall yq
       if: ${{ inputs.from == 'xml' }}
