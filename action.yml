@@ -28,7 +28,7 @@ runs:
       uses: mikefarah/yq@v4.28.1
       if: ${{ inputs.from == 'yaml' || inputs.from == 'json' }}
       with:
-        cmd: yq -P '${{ inputs.path }}' -o=${{ inputs.to }} -I=0
+        cmd: yq -P '${{ inputs.path }}' -o=${{ inputs.to }}
     - name: Save to file
       if: ${{ inputs.from == 'yaml' || inputs.from == 'json' }}
       run: echo '${{ steps.mikefarah_yq.outputs.result }}' > .yaml-json-xml-converter-action
@@ -54,6 +54,10 @@ runs:
     - name: Save output
       id: result
       run: |
-        echo "::set-output name=data::$(cat .yaml-json-xml-converter-action)"
+        content=$(cat .yaml-json-xml-converter-action)
+        content="${content//'%'/'%25'}"
+        content="${content//$'\n'/'%0A'}"
+        content="${content//$'\r'/'%0D'}"
+        echo "::set-output name=data::$content"
         rm -f .yaml-json-xml-converter-action
       shell: bash
