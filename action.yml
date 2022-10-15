@@ -43,7 +43,7 @@ runs:
       shell: bash
     - name: Uninstall yq
       if: ${{ inputs.from == 'xml' }}
-      run: pip uninstall yq
+      run: pip uninstall -y yq
       shell: bash
     # Output
     - name: Save output
