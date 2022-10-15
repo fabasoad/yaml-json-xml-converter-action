@@ -18,6 +18,34 @@ inputs:
 outputs:
   data:
     description: 'Content of a file in a format that is defined in format_to argument.'
+    value: 'TBD'
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: 'composite'
+  steps:
+    # From YAML/JSON
+    - name: JSON/YAML to JSON/XML
+      uses: mikefarah/yq@v4.28.1
+      if: ${{ inputs.from == 'yaml' }}
+      with:
+        cmd: export OUTPUT="$(yq -P ${{ inputs.path }} -o=${{ inputs.to }})"
+    # From XML
+    - name: Install yq
+      if: ${{ inputs.from == 'xml' }}
+      run: pip install yq
+      shell: bash
+    - name: XML to JSON
+      if: ${{ inputs.from == 'xml' && inputs.to == 'json' }}
+      run: export OUTPUT="$(xq . ${{ inputs.path }})"
+      shell: bash
+    - name: XML to YAML
+      if: ${{ inputs.from == 'xml' && inputs.to == 'yaml' }}
+      run: export OUTPUT="$(xq . ${{ inputs.path }} | yq -y .)"
+      shell: bash
+    - name: Uninstall yq
+      if: ${{ inputs.from == 'xml' }}
+      run: pip uninstall yq
+      shell: bash
+    # Output
+    - name: Save output
+      run: echo "::set-output name=data::$OUTPUT"
+      shell: bash

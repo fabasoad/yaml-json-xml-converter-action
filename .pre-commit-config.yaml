@@ -2,21 +2,6 @@
 default_stages: ["commit"]
 exclude: ^(.gitleaks\.toml|dist/.*\.js)$
 repos:
-  - repo: local
-    hooks:
-      - id: build
-        name: Build
-        entry: yarn run build
-        language: system
-        pass_filenames: false
-        verbose: true
-      - id: test
-        name: Unit tests
-        entry: yarn test
-        language: system
-        pass_filenames: false
-        verbose: true
-        stages: ["push"]
   # Security
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.4.0
@@ -68,4 +53,4 @@ repos:
       - id: trailing-whitespace
 ci:
   autofix_prs: false
-  skip: [build, eslint, test]
+  skip: [eslint]
