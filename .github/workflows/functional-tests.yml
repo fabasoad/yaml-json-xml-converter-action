@@ -35,19 +35,19 @@ jobs:
           path: test.yaml
           from: yaml
           to: json
+      - name: Save JSON
+        run: echo '${{ steps.yaml_json.outputs.data }}' > yaml.json
       - name: Print JSON
-        run: echo '${{ steps.yaml_json.outputs.data }}'
-#      - name: Save JSON
-#        run: echo '${{ steps.yaml_json.outputs.data }}' > yaml.json
-#      - name: Print JSON
-#        run: cat yaml.json
-#      - name: JSON to XML
-#        uses: ./
-#        id: json_xml
-#        with:
-#          path: './yaml.json'
-#          from: 'json'
-#          to: 'xml'
+        run: cat yaml.json
+      - name: JSON to XML
+        uses: ./
+        id: json_xml
+        with:
+          path: yaml.json
+          from: json
+          to: xml
+      - name: Print XML
+        run: echo "${{ steps.json_xml.outputs.data }}"
 #      - name: Save XML
 #        run: echo "${{ steps.json_xml.outputs.data }}" >> json.xml
 #      - name: Print XML
