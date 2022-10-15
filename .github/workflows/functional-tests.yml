@@ -15,7 +15,8 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+#        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+        os: ['ubuntu-latest']
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -31,42 +32,38 @@ jobs:
         uses: ./
         id: yaml_json
         with:
-          path: './test.yaml'
-          from: 'yaml'
-          to: 'json'
-      - name: Save JSON
-        run: echo '${{ steps.yaml_json.outputs.data }}' >> yaml.json
+          path: test.yaml
+          from: yaml
+          to: json
       - name: Print JSON
-        run: cat yaml.json
-      - name: JSON to XML
-        uses: ./
-        id: json_xml
-        with:
-          path: './yaml.json'
-          from: 'json'
-          to: 'xml'
-      - name: Save XML
-        run: echo "${{ steps.json_xml.outputs.data }}" >> json.xml
-      - name: Print XML
-        run: cat json.xml
-      - name: XML to YAML
-        uses: ./
-        id: xml_yaml
-        with:
-          path: './json.xml'
-          from: 'xml'
-          to: 'yaml'
-      - name: Save YAML
-        run: echo "${{ steps.xml_yaml.outputs.data }}" >> xml.yaml
-#      - name: Delete last line (Linux, Windows)
-#        if: ${{ matrix.os != 'macos-latest' }}
-#        run: sed -i '$d' xml.yaml
-#      - name: Delete last line (macOS)
-#        if: ${{ matrix.os == 'macos-latest' }}
-#        run: sed -i '' '$d' xml.yaml
-      - name: Print YAML
-        run: cat xml.yaml
-      - name: Validate
-        run: |
-          cmp -s "test.yaml" "xml.yaml" || diff "test.yaml" "xml.yaml"
-        shell: bash
+        run: echo '${{ steps.yaml_json.outputs.data }}'
+#      - name: Save JSON
+#        run: echo '${{ steps.yaml_json.outputs.data }}' > yaml.json
+#      - name: Print JSON
+#        run: cat yaml.json
+#      - name: JSON to XML
+#        uses: ./
+#        id: json_xml
+#        with:
+#          path: './yaml.json'
+#          from: 'json'
+#          to: 'xml'
+#      - name: Save XML
+#        run: echo "${{ steps.json_xml.outputs.data }}" >> json.xml
+#      - name: Print XML
+#        run: cat json.xml
+#      - name: XML to YAML
+#        uses: ./
+#        id: xml_yaml
+#        with:
+#          path: './json.xml'
+#          from: 'xml'
+#          to: 'yaml'
+#      - name: Save YAML
+#        run: echo "${{ steps.xml_yaml.outputs.data }}" >> xml.yaml
+#      - name: Print YAML
+#        run: cat xml.yaml
+#      - name: Validate
+#        run: |
+#          cmp -s "test.yaml" "xml.yaml" || diff "test.yaml" "xml.yaml"
+#        shell: bash
