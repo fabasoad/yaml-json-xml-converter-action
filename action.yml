@@ -18,7 +18,7 @@ inputs:
 outputs:
   data:
     description: 'Content of a file in a format that is defined in format_to argument.'
-    value: 'TBD'
+    value: ${{ steps.result.outputs.data }}
 runs:
   using: 'composite'
   steps:
@@ -27,7 +27,7 @@ runs:
       uses: mikefarah/yq@v4.28.1
       if: ${{ inputs.from == 'yaml' }}
       with:
-        cmd: export OUTPUT="$(yq -P ${{ inputs.path }} -o=${{ inputs.to }})"
+        cmd: export OUTPUT="$(yq -P '${{ inputs.path }}' -o=${{ inputs.to }})"
     # From XML
     - name: Install yq
       if: ${{ inputs.from == 'xml' }}
@@ -35,11 +35,11 @@ runs:
       shell: bash
     - name: XML to JSON
       if: ${{ inputs.from == 'xml' && inputs.to == 'json' }}
-      run: export OUTPUT="$(xq . ${{ inputs.path }})"
+      run: export OUTPUT="$(xq . '${{ inputs.path }}')"
       shell: bash
     - name: XML to YAML
       if: ${{ inputs.from == 'xml' && inputs.to == 'yaml' }}
-      run: export OUTPUT="$(xq . ${{ inputs.path }} | yq -y .)"
+      run: export OUTPUT="$(xq . '${{ inputs.path }}' | yq -y .)"
       shell: bash
     - name: Uninstall yq
       if: ${{ inputs.from == 'xml' }}
@@ -47,5 +47,6 @@ runs:
       shell: bash
     # Output
     - name: Save output
+      id: result
       run: echo "::set-output name=data::$OUTPUT"
       shell: bash
