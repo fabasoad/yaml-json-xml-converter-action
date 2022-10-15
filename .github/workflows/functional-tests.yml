@@ -23,9 +23,9 @@ jobs:
       - name: Prepare
         run: |
           echo "---" > test.yaml
-          echo "s: " >> test.yaml
+          echo "s:" >> test.yaml
           echo "  v: '1'" >> test.yaml
-          echo "  modules: " >> test.yaml
+          echo "  modules:" >> test.yaml
           echo "    - test1" >> test.yaml
           echo "    - test2" >> test.yaml
       - name: YAML to JSON
