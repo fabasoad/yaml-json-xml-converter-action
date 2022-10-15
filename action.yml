@@ -28,7 +28,7 @@ runs:
       uses: mikefarah/yq@v4.28.1
       if: ${{ inputs.from == 'yaml' }}
       with:
-        cmd: yq -P '${{ inputs.path }}' -o=${{ inputs.to }}
+        cmd: yq -P '${{ inputs.path }}' -o=${{ inputs.to }} -I=0
     - name: Save to file
       if: ${{ inputs.from == 'yaml' }}
       run: echo '${{ steps.mikefarah_yq.outputs.result }}' > .yaml-json-xml-converter-action
