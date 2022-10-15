@@ -27,7 +27,9 @@ runs:
       uses: mikefarah/yq@v4.28.1
       if: ${{ inputs.from == 'yaml' }}
       with:
-        cmd: export OUTPUT="$(yq -P '${{ inputs.path }}' -o=${{ inputs.to }})"
+        cmd: |
+          res="$(yq -P '${{ inputs.path }}' -o=${{ inputs.to }})"
+          echo "OUTPUT=$res" >> $GITHUB_ENV
     # From XML
     - name: Install yq
       if: ${{ inputs.from == 'xml' }}
@@ -35,11 +37,15 @@ runs:
       shell: bash
     - name: XML to JSON
       if: ${{ inputs.from == 'xml' && inputs.to == 'json' }}
-      run: export OUTPUT="$(xq . '${{ inputs.path }}')"
+      run: |
+        res="$(xq . '${{ inputs.path }}')"
+        echo "OUTPUT=$res" >> $GITHUB_ENV
       shell: bash
     - name: XML to YAML
       if: ${{ inputs.from == 'xml' && inputs.to == 'yaml' }}
-      run: export OUTPUT="$(xq . '${{ inputs.path }}' | yq -y .)"
+      run: |
+        res="$(xq . '${{ inputs.path }}' | yq -y .)"
+        echo "OUTPUT=$res" >> $GITHUB_ENV
       shell: bash
     - name: Uninstall yq
       if: ${{ inputs.from == 'xml' }}
