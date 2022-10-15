@@ -15,58 +15,50 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-#        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
-        os: ['ubuntu-latest']
+        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+        from: ['yaml', 'json', 'xml']
+        to: ['yaml', 'json', 'xml']
+        exclude:
+          - from: 'yaml'
+            to: 'yaml'
+          - from: 'json'
+            to: 'json'
+          - from: 'xml'
+            to: 'xml'
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - name: Prepare
+      - name: Prepare YAML
+        if: ${{ matrix.from == 'yaml' }}
         run: |
-          echo "s:" > test.yaml
-          echo "  v: '1'" >> test.yaml
-          echo "  modules:" >> test.yaml
-          echo "    - test1" >> test.yaml
-          echo "    - test2" >> test.yaml
-      - name: YAML to JSON
+          echo "s:" > expected.yaml
+          echo "  v: '1'" >> expected.yaml
+          echo "  modules:" >> expected.yaml
+          echo "    - test1" >> expected.yaml
+          echo "    - test2" >> expected.yaml
+      - name: Prepare JSON
+        if: ${{ matrix.from == 'json' }}
+        run: |
+          echo '{"s":{"v": "1","modules": ["test1","test2"]}}' > expected.json
+      - name: Prepare XML
+        if: ${{ matrix.from == 'xml' }}
+        run: echo "<s><v>1</v><modules>test1</modules><modules>test2</modules></s>" > expected.xml
+      - name: Convert
         uses: ./
-        id: yaml_json
+        id: convert
         with:
-          path: test.yaml
-          from: yaml
-          to: json
-      - name: Save JSON
-        run: echo '${{ steps.yaml_json.outputs.data }}' > yaml.json
-      - name: Print JSON
-        run: cat yaml.json
-      - name: JSON to XML
-        uses: ./
-        id: json_xml
-        with:
-          path: yaml.json
-          from: json
-          to: xml
-      - name: Save XML
-        run: echo "${{ steps.json_xml.outputs.data }}" > json.xml
-      - name: Print XML
-        run: cat json.xml
-      - name: XML to YAML
-        uses: ./
-        id: xml_yaml
-        with:
-          path: json.xml
-          from: xml
-          to: yaml
-      - name: Save YAML
-        run: echo "${{ steps.xml_yaml.outputs.data }}" > xml.yaml
-      - name: Print YAML
-        run: cat xml.yaml
+          path: expected.${{ matrix.from }}
+          from: ${{ matrix.from }}
+          to: ${{ matrix.to }}
+      - name: Save file
+        run: echo '${{ steps.convert.outputs.data }}' > actual.${{ matrix.to }}
+      - name: Print file
+        run: cat actual.${{ matrix.to }}
       - name: Validate
-        run: cmp -s "test.yaml" "xml.yaml" || diff "test.yaml" "xml.yaml"
+        run: cmp -s "expected.${{ matrix.from }}" "actual.${{ matrix.to }}" || diff "expected.${{ matrix.from }}" "actual.${{ matrix.to }}"
         shell: bash
       - name: Clean
         run: |
-          rm -f test.yaml
-          rm -f yaml.json
-          rm -f json.xml
-          rm -f xml.yaml
+          rm -f expected.${{ matrix.from }}
+          rm -f actual.${{ matrix.to }}
         shell: bash
