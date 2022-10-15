@@ -14,6 +14,7 @@ jobs:
     name: Positive tests
     timeout-minutes: 5
     strategy:
+      fail-fast: false
       matrix:
         os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
         from: ['yaml', 'json', 'xml']
@@ -35,8 +36,20 @@ jobs:
           echo "  modules:" >> expected.yaml
           echo "    - test1" >> expected.yaml
           echo "    - test2" >> expected.yaml
-          echo '{"s":{"v": "1","modules": ["test1","test2"]}}' > expected.json
-          echo "<s><v>1</v><modules>test1</modules><modules>test2</modules></s>" > expected.xml
+          echo '{' > expected.json
+          echo '  "s": {' >> expected.json
+          echo '    "v": 1,' >> expected.json
+          echo '    "modules": [' >> expected.json
+          echo '      "test1",' >> expected.json
+          echo '      "test2"' >> expected.json
+          echo '    ]' >> expected.json
+          echo '  }' >> expected.json
+          echo '}' >> expected.json
+          echo "<s>" > expected.xml
+          echo "  <v>1</v>" >> expected.xml
+          echo "  <modules>test1</modules>" >> expected.xml
+          echo "  <modules>test2</modules>" >> expected.xml
+          echo "</s>" >> expected.xml
       - name: Convert
         uses: ./
         id: convert
