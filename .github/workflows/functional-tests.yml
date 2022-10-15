@@ -47,7 +47,7 @@ jobs:
           from: json
           to: xml
       - name: Save XML
-        run: echo "${{ steps.json_xml.outputs.data }}" >> json.xml
+        run: echo "${{ steps.json_xml.outputs.data }}" > json.xml
       - name: Print XML
         run: cat json.xml
       - name: XML to YAML
@@ -58,7 +58,7 @@ jobs:
           from: xml
           to: yaml
       - name: Save YAML
-        run: echo "${{ steps.xml_yaml.outputs.data }}" >> xml.yaml
+        run: echo "${{ steps.xml_yaml.outputs.data }}" > xml.yaml
       - name: Print YAML
         run: cat xml.yaml
       - name: Validate
