@@ -22,12 +22,6 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    # From YAML/JSON
-    - name: Test
-      run: |
-        echo "TEEESSSSTTT"
-        yq --version
-      shell: bash
     - name: Check yq
       id: check_yq
       run: |
@@ -122,6 +116,7 @@ runs:
         chmod +x yq
         echo "$(pwd)" >> $GITHUB_PATH
       shell: bash
+    # From YAML/JSON
     - name: JSON/YAML to JSON/XML/YAML
       if: ${{ inputs.from != 'xml' }}
       run: yq -P '${{ inputs.path }}' -o=${{ inputs.to }} > .yaml-json-xml-converter-action
