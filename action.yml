@@ -1,7 +1,7 @@
 ---
 name: 'YAML/JSON/XML Converter Action (Deprecated)'
 author: Yevhen Fabizhevskyi
-description: 'Please use https://github.com/marketplace/actions/data-format-converter-action instead.'
+description: 'Please use "Data Format Converter Action" instead.'
 branding:
   icon: eye-off
   color: gray-dark
