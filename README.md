@@ -1,7 +1,7 @@
 # YAML/JSON/XML action (Deprecated)
 
-> **This GitHub action is deprecated and is not supported starting from `2022/10/21`. Please use
-> [fabasoad/data-format-converter-action](https://github.com/fabasoad/data-format-converter-action)
+> **This GitHub action is deprecated and is no longer maintained starting from `2022/10/21`. Please
+> use [fabasoad/data-format-converter-action](https://github.com/fabasoad/data-format-converter-action)
 > instead. It is faster, can be run on any OS and supports much more data formats than this one.**
 
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/fabasoad/yaml-json-xml-converter-action?include_prereleases)
