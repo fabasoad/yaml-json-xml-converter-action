@@ -12,7 +12,6 @@ on:
 jobs:
   yaml-to-json:
     name: YAML / JSON / XML
-    if: false
     timeout-minutes: 5
     strategy:
       matrix:
