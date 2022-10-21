@@ -1,10 +1,10 @@
 ---
-name: 'YAML/JSON/XML Converter Action'
+name: 'YAML/JSON/XML Converter Action (Deprecated)'
 author: Yevhen Fabizhevskyi
-description: 'This action takes file that in YAML/JSON/XML format and produces it in output in YAML/JSON/XML format.'
+description: 'Please use https://github.com/marketplace/actions/data-format-converter-action instead.'
 branding:
-  icon: copy
-  color: green
+  icon: eye-off
+  color: gray-dark
 inputs:
   path:
     description: 'Path to the file'
